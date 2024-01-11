@@ -8,7 +8,8 @@ var enemy_instance4
 var enemy_instance5
 var enemy_instance6
 var enemycoolcount = 1
-@onready var Game_over_visibility = $Game_over_screen
+var canShoot = true
+@onready var Game_over_visibility = $UI/Game_over_screen
 
 
 
@@ -22,34 +23,37 @@ func _process(delta):
 	GlobalVars.PlayerPos = $Player.position
 	
 	if Input.is_action_just_pressed("fire"):
-		var scene = preload("res://Scenes/Bullet.tscn")
-		var instance = scene.instantiate()
-		instance.add_to_group("ToReset")
-		add_child(instance)
-		if fireholecount == 1: 
-			instance.position = $Player/FireHole1.global_position
-			fireholecount += 1
-		elif fireholecount == 2:
-			instance.position = $Player/FireHole2.global_position
-			fireholecount += 1
-		elif fireholecount == 3:
-			instance.position = $Player/FireHole3.global_position
-			fireholecount += 1
-		elif fireholecount == 4:
-			instance.position = $Player/FireHole4.global_position
-			fireholecount = 1
+		if canShoot:
+			$Player/ShootCooldown.start()
+			canShoot = false
+			var scene = preload("res://Scenes/Bullet.tscn")
+			var instance = scene.instantiate()
+			instance.add_to_group("ToReset")
+			add_child(instance)
+			if fireholecount == 1: 
+				instance.position = $Player/FireHole1.global_position
+				fireholecount += 1
+			elif fireholecount == 2:
+				instance.position = $Player/FireHole2.global_position
+				fireholecount += 1
+			elif fireholecount == 3:
+				instance.position = $Player/FireHole3.global_position
+				fireholecount += 1
+			elif fireholecount == 4:
+				instance.position = $Player/FireHole4.global_position
+				fireholecount = 1
 		
 	if Input.is_action_just_pressed("locate"):
 		print($Player/Locator.global_position)
 	$UI/ProgressBar.value = ($Player/DashCooldown.time_left /  3)*100
 	$UI/Percentage.text = "[center]" + str(roundf(($Player/DashCooldown.time_left /  3)*30)/10) + "s"
-	$ScoreBoard.text = "Score: " + str(GlobalVars.score)
+	$UI/ScoreBoard.text = "Score: " + str(GlobalVars.score)
 	
 	
 	
 
 func _on_mob_spawn_timeout(): # there has got to be a better way to do this 
-	if GlobalVars.enemyCount > 4:
+	if GlobalVars.enemyCount == 5:
 		pass
 	elif enemycoolcount == 1:
 		var random_number = randi() % 9
@@ -251,3 +255,7 @@ func _on_restart():
 	$MobSpawnTimer.stop()
 	$MobSpawnTimer.start()
 	
+
+
+func _on_shoot_cooldown_timeout():
+	canShoot = true
