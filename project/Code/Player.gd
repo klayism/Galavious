@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 # How fast the player moves in meters per second.
 @export var speed = 30
-@export var dash_speed = 60  # Speed for dashing
+@export var dash_speed = 30  # Speed for dashing
 var is_dashing = false
 var dash_direction = Vector3.ZERO
 var CurrentDirection = null
