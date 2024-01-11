@@ -248,6 +248,7 @@ func spawnplacement(instance, random_number):
 	
 func _on_restart():
 	get_tree().call_group("ToReset","queue_free")
+	GlobalVars.enemyCount = 0
 	Game_over_visibility.visible = false
 	fireholecount = 1
 	$Player.position = Vector3(0,0,0)

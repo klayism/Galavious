@@ -21,7 +21,6 @@ func _physics_process(delta):
 	if startfirstmovement:
 		if isWithinRange(position.z, firstmoveplayerpos.z, .5):
 			startfirstmovement = false
-			print("here")
 			zpos = 0
 			skipFirst = true
 		if firstmoveplayerpos.z > position.z and !skipFirst:
