@@ -1,0 +1,170 @@
+[gd_scene load_steps=8 format=3 uid="uid://c21x2ty0gdut3"]
+
+[ext_resource type="Script" path="res://Code/Main.gd" id="1_q0oae"]
+[ext_resource type="PackedScene" uid="uid://b71a1ul30k024" path="res://Scenes/Player.tscn" id="2_sytxx"]
+[ext_resource type="PackedScene" uid="uid://ltxxlmstcipn" path="res://Scenes/Score.tscn" id="3_sgxjt"]
+[ext_resource type="PackedScene" uid="uid://nrekp1l80t2y" path="res://Scenes/Enemy.tscn" id="4_1i6xg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rtghv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dp2i6"]
+size = Vector3(46.678, 1, 1)
+
+[sub_resource type="Curve3D" id="Curve3D_egsas"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 29.718, 0, -0.589, 0, 0, 0, 0, 0, 0, 35.78, 0, -10.126, 0, 0, 0, 0, 0, 0, 56.302, 0, -9.032, 0, 0, 0, 0, 0, 0, 65.444, 0, -18.829, 0, 0, 0, 0, 0, 0, 74.1475, -3.67133, -14.3307),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_q0oae")
+
+[node name="Player" parent="." instance=ExtResource("2_sytxx")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.939693, 0.34202, 0, 0.34202, 0.939693, -1, 4.10753e-08, -1.49502e-08, 16.9206, 43.855, -6.32799e-07)
+fov = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.939693, 0.34202, 0, 0.34202, 0.939693, -1, 4.10753e-08, -1.49502e-08, 18.5761, 15.2549, 0.562506)
+light_energy = 4.0
+
+[node name="RightWall" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.985109, 0, 0.171929, 0, 1, 0, -0.171929, 0, -0.985109, -1.95644, 0, -27.988)
+collision_layer = 16
+collision_mask = 31
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RightWall"]
+transform = Transform3D(46.678, 0, 2.98023e-08, 0, 1, 0, -1.39111e-06, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_rtghv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RightWall"]
+transform = Transform3D(1, 0, -1.87755e-06, 0, 1, 0, 1.87755e-06, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_dp2i6")
+
+[node name="LeftWall" type="StaticBody3D" parent="."]
+transform = Transform3D(-0.985109, 0, -0.171929, 0, 1, 0, 0.171929, 0, -0.985109, -1.95644, 0, 28.012)
+collision_layer = 31
+collision_mask = 31
+metadata/_edit_group_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="LeftWall"]
+transform = Transform3D(46.678, 0, 2.98023e-08, 0, 1, 0, -1.39111e-06, 0, 1, 0, 0, 0)
+mesh = SubResource("BoxMesh_rtghv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LeftWall"]
+transform = Transform3D(1, 0, -1.87755e-06, 0, 1, 0, 1.87755e-06, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_dp2i6")
+
+[node name="Location" type="Node" parent="."]
+
+[node name="Paths" type="Node" parent="Location"]
+
+[node name="Spawns" type="Node" parent="Location"]
+
+[node name="MobSpawn" type="Marker3D" parent="Location/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 0, 24)
+
+[node name="Path3D" type="Path3D" parent="Location/Spawns/MobSpawn"]
+curve = SubResource("Curve3D_egsas")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Location/Spawns/MobSpawn/Path3D"]
+transform = Transform3D(0.00330595, 0, -0.149964, 0, 0.15, 0, 0.149964, 0, 0.00330595, 3, 0, 0)
+
+[node name="MobSpawn2" type="Marker3D" parent="Location/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 0, 18)
+
+[node name="Path3D" type="Path3D" parent="Location/Spawns/MobSpawn2"]
+curve = SubResource("Curve3D_egsas")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Location/Spawns/MobSpawn2/Path3D"]
+transform = Transform3D(0.00330595, 0, -0.149964, 0, 0.15, 0, 0.149964, 0, 0.00330595, 3, 0, 0)
+
+[node name="MobSpawn3" type="Marker3D" parent="Location/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 0, 12)
+
+[node name="Path3D" type="Path3D" parent="Location/Spawns/MobSpawn3"]
+curve = SubResource("Curve3D_egsas")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Location/Spawns/MobSpawn3/Path3D"]
+transform = Transform3D(0.00330595, 0, -0.149964, 0, 0.15, 0, 0.149964, 0, 0.00330595, 3, 0, 0)
+
+[node name="MobSpawn4" type="Marker3D" parent="Location/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 0, 6)
+
+[node name="Path3D" type="Path3D" parent="Location/Spawns/MobSpawn4"]
+curve = SubResource("Curve3D_egsas")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Location/Spawns/MobSpawn4/Path3D"]
+transform = Transform3D(0.00330595, 0, -0.149964, 0, 0.15, 0, 0.149964, 0, 0.00330595, 3, 0, 0)
+
+[node name="MobSpawn5" type="Marker3D" parent="Location/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 0, 0)
+
+[node name="Path3D" type="Path3D" parent="Location/Spawns/MobSpawn5"]
+curve = SubResource("Curve3D_egsas")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Location/Spawns/MobSpawn5/Path3D"]
+transform = Transform3D(0.00330595, 0, -0.149964, 0, 0.15, 0, 0.149964, 0, 0.00330595, 3, 0, 0)
+
+[node name="MobSpawn6" type="Marker3D" parent="Location/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 0, -6)
+
+[node name="Path3D" type="Path3D" parent="Location/Spawns/MobSpawn6"]
+curve = SubResource("Curve3D_egsas")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Location/Spawns/MobSpawn6/Path3D"]
+transform = Transform3D(0.00330595, 0, -0.149964, 0, 0.15, 0, 0.149964, 0, 0.00330595, 3, 0, 0)
+
+[node name="MobSpawn7" type="Marker3D" parent="Location/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 0, -12)
+
+[node name="Path3D" type="Path3D" parent="Location/Spawns/MobSpawn7"]
+curve = SubResource("Curve3D_egsas")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Location/Spawns/MobSpawn7/Path3D"]
+transform = Transform3D(0.00330595, 0, -0.149964, 0, 0.15, 0, 0.149964, 0, 0.00330595, 3, 0, 0)
+
+[node name="MobSpawn8" type="Marker3D" parent="Location/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 0, -18)
+
+[node name="Path3D" type="Path3D" parent="Location/Spawns/MobSpawn8"]
+curve = SubResource("Curve3D_egsas")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Location/Spawns/MobSpawn8/Path3D"]
+transform = Transform3D(0.00330595, 0, -0.149964, 0, 0.15, 0, 0.149964, 0, 0.00330595, 3, 0, 0)
+
+[node name="MobSpawn9" type="Marker3D" parent="Location/Spawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49, 0, -24)
+
+[node name="Path3D" type="Path3D" parent="Location/Spawns/MobSpawn9"]
+curve = SubResource("Curve3D_egsas")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Location/Spawns/MobSpawn9/Path3D"]
+transform = Transform3D(0.00330595, 0, -0.149964, 0, 0.15, 0, 0.149964, 0, 0.00330595, 3, 0, 0)
+
+[node name="Reference" type="Node" parent="Location"]
+
+[node name="UpLeft" type="Marker3D" parent="Location/Reference"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.7849, 0, 39.8621)
+
+[node name="Upright" type="Marker3D" parent="Location/Reference"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.785, 0, -39.862)
+
+[node name="BottomRight" type="Marker3D" parent="Location/Reference"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.2676, 0, -20.7873)
+
+[node name="BottomLeft" type="Marker3D" parent="Location/Reference"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.268, 0, 20.787)
+
+[node name="MobSpawn" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[node name="Control" parent="." instance=ExtResource("3_sgxjt")]
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("4_1i6xg")]
+
+[connection signal="timeout" from="MobSpawn" to="." method="_on_mob_spawn_timeout"]

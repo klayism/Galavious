@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://nrekp1l80t2y"]
+
+[ext_resource type="Script" path="res://Code/Enemy.gd" id="1_wuflx"]
+[ext_resource type="PackedScene" uid="uid://b0nanqfkrcc8v" path="res://3DRenders/enemy.glb" id="2_iv0xc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6dhj2"]
+size = Vector3(24.5579, 22.2466, 22.477)
+
+[node name="PathFollow3D" type="PathFollow3D"]
+transform = Transform3D(0.997899, -0.00165345, 0.064707, 5.82074e-11, 0.999671, 0.0255442, -0.0647283, -0.0254908, 0.99757, 11.8715, -3.33467, 3.40472)
+script = ExtResource("1_wuflx")
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+collision_layer = 2
+collision_mask = 20
+platform_floor_layers = 18
+platform_wall_layers = 18
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.90927, 1.98225, -0.261505)
+shape = SubResource("BoxShape3D_6dhj2")
+
+[node name="enemy" parent="CharacterBody3D" instance=ExtResource("2_iv0xc")]
+
+[node name="EnemyDeath" type="Timer" parent="CharacterBody3D"]
+wait_time = 15.0
+autostart = true
+
+[connection signal="timeout" from="CharacterBody3D/EnemyDeath" to="." method="_on_enemy_death_timeout"]

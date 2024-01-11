@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0y165a71k575"]
+
+[ext_resource type="Script" path="res://Code/Bullet.gd" id="1_r3vai"]
+[ext_resource type="PackedScene" uid="uid://dvyydq467w5a7" path="res://3DRenders/Bullet.glb" id="2_prp5l"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h3qvc"]
+size = Vector3(12.0804, 4.03882, 4.11193)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+collision_layer = 4
+collision_mask = 2
+mass = 0.01
+max_contacts_reported = 10
+contact_monitor = true
+script = ExtResource("1_r3vai")
+
+[node name="BulletFrame" parent="." instance=ExtResource("2_prp5l")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.499109, 0.101304, 0.0930528)
+shape = SubResource("BoxShape3D_h3qvc")
+
+[node name="BulletDeath" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

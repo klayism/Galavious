@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://c21x2ty0gdut3"]
+
+[ext_resource type="PackedScene" uid="uid://b71a1ul30k024" path="res://Player.tscn" id="1_ti85d"]
+
+[sub_resource type="GDScript" id="GDScript_3gxdc"]
+script/source = "extends CharacterBody3D
+
+# How fast the player moves in meters per second.
+@export var speed = 14
+# The downward acceleration when in the air, in meters per second squared.
+@export var fall_acceleration = 75
+
+var target_velocity = Vector3.ZERO
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ti85d")]
+script = SubResource("GDScript_3gxdc")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-3.78552e-08, -0.5, 0.866025, -2.18557e-08, 0.866025, 0.5, -1, -1.77636e-15, -4.37114e-08, 17.2475, 14.855, -6.32799e-07)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.5, 0.866025, 0, 0.866025, 0.5, -1, 2.18557e-08, -3.78552e-08, 18.5761, 15.2549, 0.562506)
+light_energy = 4.0
