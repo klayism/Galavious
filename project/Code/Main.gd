@@ -49,7 +49,9 @@ func _process(delta):
 	
 
 func _on_mob_spawn_timeout(): # there has got to be a better way to do this 
-	if enemycoolcount == 1:
+	if GlobalVars.enemyCount > 4:
+		pass
+	elif enemycoolcount == 1:
 		var random_number = randi() % 9
 		var scene = preload("res://Scenes/Enemy.tscn")
 		enemy_instance = scene.instantiate()

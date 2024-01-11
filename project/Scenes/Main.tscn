@@ -135,7 +135,7 @@ theme_override_font_sizes/font_size = 30
 text = "START OVER"
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-3.4649e-07, -7.89658, -0.690862, 0, 0.690862, -7.89658, 7.92677, -3.4517e-07, -3.01985e-08, 0, -33, 0)
+transform = Transform3D(-4.15788e-07, -9.36758, -1.65176, 0, 1.65176, -9.36758, 9.51213, -4.0947e-07, -7.22006e-08, 0, -33, 0)
 texture = ExtResource("6_n0l04")
 
 [connection signal="timeout" from="MobSpawnTimer" to="." method="_on_mob_spawn_timeout"]
