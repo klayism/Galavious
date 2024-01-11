@@ -63,7 +63,7 @@ func _on_mob_spawn_timeout(): # there has got to be a better way to do this
 		var FiringTimer = Timer.new()
 		spawnplacement(enemy_instance, random_number)
 		FiringTimer.timeout.connect(fire.bind(FiringTimer,enemy_instance.position,enemy_instance,enemycoolcount))
-		FiringTimer.wait_time = 1.1
+		FiringTimer.wait_time = 0.7
 		FiringTimer.autostart = true
 		enemy_instance.add_child(FiringTimer)
 		$MobSpawnTimer.start()
