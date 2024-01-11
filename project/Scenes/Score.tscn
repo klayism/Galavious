@@ -17,9 +17,9 @@ anchor_left = 0.288
 anchor_right = 0.676
 anchor_bottom = 0.076
 offset_left = -551.96
-offset_top = 982.0
+offset_top = 806.0
 offset_right = -869.384
-offset_bottom = 974.752
+offset_bottom = 798.752
 theme_override_fonts/normal_font = ExtResource("1_fu37o")
 theme_override_font_sizes/normal_font_size = 20
 text = "Dash Cooldown"
@@ -29,9 +29,9 @@ shortcut_keys_enabled = false
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 0
-offset_top = 1003.0
+offset_top = 827.0
 offset_right = 182.0
-offset_bottom = 1079.0
+offset_bottom = 903.0
 value = 100.0
 show_percentage = false
 
@@ -39,9 +39,9 @@ show_percentage = false
 texture_filter = 1
 layout_mode = 0
 offset_left = 1.0
-offset_top = 1018.0
+offset_top = 842.0
 offset_right = 91.0
-offset_bottom = 1041.0
+offset_bottom = 865.0
 scale = Vector2(2, 2)
 theme_override_fonts/normal_font = ExtResource("1_fu37o")
 theme_override_font_sizes/normal_font_size = 20
