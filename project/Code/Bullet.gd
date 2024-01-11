@@ -24,6 +24,6 @@ func _on_body_entered(body):
 	else:
 		body.position = Vector3(1000000,1000000,1000000)
 		GlobalVars.score += 5
-		body.queue_free
+		body.queue_free()
 		GlobalVars.enemyCount -= 1
 		self.queue_free()
