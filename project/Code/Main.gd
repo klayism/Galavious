@@ -210,11 +210,7 @@ func fire(selfname, inspos, parentenemy,enemycoolcountusehere): # there has got 
 		instance.rotate_y(deg_to_rad(90))
 		instance.add_to_group("ToReset")
 		instance.scale = Vector3(.8,.8,.8)
-		
 
-	
-	
-	
 
 func spawnplacement(instance, random_number):
 	if random_number == 0:
