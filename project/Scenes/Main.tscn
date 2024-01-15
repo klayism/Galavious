@@ -1,14 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://c21x2ty0gdut3"]
+[gd_scene load_steps=9 format=3 uid="uid://c21x2ty0gdut3"]
 
 [ext_resource type="Script" path="res://Code/Main.gd" id="1_q0oae"]
 [ext_resource type="PackedScene" uid="uid://b71a1ul30k024" path="res://Scenes/Player.tscn" id="2_6rdrn"]
+[ext_resource type="Material" uid="uid://dkxr0wkmtmubf" path="res://Materials/Wall.material" id="3_0o3m4"]
 [ext_resource type="PackedScene" uid="uid://ltxxlmstcipn" path="res://Scenes/Score.tscn" id="3_sgxjt"]
 [ext_resource type="Texture2D" uid="uid://dhtkhwyl0bmq7" path="res://Space.jpg" id="6_n0l04"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_rtghv"]
+material = ExtResource("3_0o3m4")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dp2i6"]
 size = Vector3(46.678, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_oqhb0"]
+material = ExtResource("3_0o3m4")
 
 [node name="Main" type="Node3D"]
 script = ExtResource("1_q0oae")
@@ -49,7 +54,7 @@ metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="LeftWall"]
 transform = Transform3D(46.678, 0, 2.98023e-08, 0, 1, 0, -1.39111e-06, 0, 1, 0, 0, 0)
-mesh = SubResource("BoxMesh_rtghv")
+mesh = SubResource("BoxMesh_oqhb0")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LeftWall"]
 transform = Transform3D(1, 0, -1.87755e-06, 0, 1, 0, 1.87755e-06, 0, 1, 0, 0, 0)
