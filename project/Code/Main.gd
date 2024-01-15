@@ -16,7 +16,7 @@ var canShoot = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	GlobalVars.restart_pressed.connect(_on_restart)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -42,15 +42,11 @@ func _process(delta):
 			elif fireholecount == 4:
 				instance.position = $Player/FireHole4.global_position
 				fireholecount = 1
-		
 	if Input.is_action_just_pressed("locate"):
 		print($Player/Locator.global_position)
 	$UI/ProgressBar.value = ($Player/DashCooldown.time_left /  3)*100
 	$UI/Percentage.text = "[center]" + str(roundf(($Player/DashCooldown.time_left /  3)*30)/10) + "s"
 	$UI/ScoreBoard.text = "Score: " + str(GlobalVars.score)
-	
-	
-	
 
 func _on_mob_spawn_timeout(): # there has got to be a better way to do this 
 	if GlobalVars.enemyCount == 5:

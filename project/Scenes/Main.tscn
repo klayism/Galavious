@@ -1,10 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c21x2ty0gdut3"]
+[gd_scene load_steps=7 format=3 uid="uid://c21x2ty0gdut3"]
 
 [ext_resource type="Script" path="res://Code/Main.gd" id="1_q0oae"]
 [ext_resource type="PackedScene" uid="uid://b71a1ul30k024" path="res://Scenes/Player.tscn" id="2_6rdrn"]
 [ext_resource type="PackedScene" uid="uid://ltxxlmstcipn" path="res://Scenes/Score.tscn" id="3_sgxjt"]
-[ext_resource type="PackedScene" uid="uid://cqn53dkwlushq" path="res://Scenes/Game_over.tscn" id="4_nmw66"]
-[ext_resource type="FontFile" uid="uid://cik3itsj706dl" path="res://Monocraft.otf" id="5_b1j8f"]
 [ext_resource type="Texture2D" uid="uid://dhtkhwyl0bmq7" path="res://Space.jpg" id="6_n0l04"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_rtghv"]
@@ -110,40 +108,9 @@ autostart = true
 
 [node name="UI" parent="." instance=ExtResource("3_sgxjt")]
 
-[node name="Game_over_screen" parent="UI" instance=ExtResource("4_nmw66")]
-layout_mode = 1
-
-[node name="Restart" type="Button" parent="UI/Game_over_screen"]
-layout_mode = 0
-offset_left = 755.0
-offset_top = 542.0
-offset_right = 971.0
-offset_bottom = 626.0
-theme_override_fonts/font = ExtResource("5_b1j8f")
-theme_override_font_sizes/font_size = 30
-text = "START OVER"
-
-[node name="ScoreBoard" type="RichTextLabel" parent="UI"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.288
-anchor_right = 0.676
-anchor_bottom = 0.076
-offset_left = 257.04
-offset_top = 4.0
-offset_right = -195.92
-offset_bottom = 3.92001
-theme_override_fonts/normal_font = ExtResource("5_b1j8f")
-theme_override_font_sizes/normal_font_size = 40
-text = "Score : 0"
-fit_content = true
-scroll_active = false
-shortcut_keys_enabled = false
-
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-4.15788e-07, -9.36758, -1.65176, 0, 1.65176, -9.36758, 9.51213, -4.0947e-07, -7.22006e-08, 0, -33, 0)
 texture = ExtResource("6_n0l04")
 
 [connection signal="timeout" from="Player/ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]
 [connection signal="timeout" from="MobSpawnTimer" to="." method="_on_mob_spawn_timeout"]
-[connection signal="button_down" from="UI/Game_over_screen/Restart" to="." method="_on_restart"]

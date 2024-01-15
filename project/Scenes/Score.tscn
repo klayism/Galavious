@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://ltxxlmstcipn"]
+[gd_scene load_steps=4 format=3 uid="uid://ltxxlmstcipn"]
 
+[ext_resource type="Script" path="res://Scenes/UI.gd" id="1_02l2s"]
 [ext_resource type="FontFile" uid="uid://cik3itsj706dl" path="res://Monocraft.otf" id="1_fu37o"]
+[ext_resource type="PackedScene" uid="uid://cqn53dkwlushq" path="res://Scenes/Game_over.tscn" id="2_1eeci"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -9,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_02l2s")
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -49,3 +52,35 @@ bbcode_enabled = true
 scroll_active = false
 deselect_on_focus_loss_enabled = false
 drag_and_drop_selection_enabled = false
+
+[node name="Game_over_screen" parent="." instance=ExtResource("2_1eeci")]
+layout_mode = 1
+
+[node name="Restart" type="Button" parent="Game_over_screen"]
+layout_mode = 0
+offset_left = 755.0
+offset_top = 542.0
+offset_right = 971.0
+offset_bottom = 626.0
+theme_override_fonts/font = ExtResource("1_fu37o")
+theme_override_font_sizes/font_size = 30
+text = "START OVER"
+
+[node name="ScoreBoard" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.288
+anchor_right = 0.676
+anchor_bottom = 0.076
+offset_left = 257.04
+offset_top = 4.0
+offset_right = -195.92
+offset_bottom = 3.92001
+theme_override_fonts/normal_font = ExtResource("1_fu37o")
+theme_override_font_sizes/normal_font_size = 40
+text = "Score : 0"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[connection signal="pressed" from="Game_over_screen/Restart" to="." method="_on_restart_pressed"]
