@@ -9,7 +9,7 @@ var enemy_instance5
 var enemy_instance6
 var enemycoolcount = 1
 var canShoot = true
-@onready var Game_over_visibility = $UI/Game_over_screen
+@onready var Game_over_visibility = $UI/GameOverText
 
 
 
@@ -45,7 +45,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("locate"):
 		print($Player/Locator.global_position)
 	$UI/ProgressBar.value = ($Player/DashCooldown.time_left /  3)*100
-	$UI/Percentage.text = "[center]" + str(roundf(($Player/DashCooldown.time_left /  3)*30)/10) + "s"
+	$UI/ProgressBar/Percentage.text = "[center]" + str(roundf(($Player/DashCooldown.time_left /  3)*30)/10) + "s"
 	$UI/ScoreBoard.text = "[center]Score: " + str(GlobalVars.score)
 
 func _on_mob_spawn_timeout(): # there has got to be a better way to do this 
@@ -245,7 +245,7 @@ func spawnplacement(instance, random_number):
 func _on_restart():
 	get_tree().call_group("ToReset","queue_free")
 	GlobalVars.enemyCount = 0
-	Game_over_visibility.visible = false
+	$UI/GameOverText.visible = false
 	fireholecount = 1
 	$Player.position = Vector3(0,0,0)
 	$MobSpawnTimer.stop()

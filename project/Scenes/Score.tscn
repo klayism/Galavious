@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ltxxlmstcipn"]
+[gd_scene load_steps=3 format=3 uid="uid://ltxxlmstcipn"]
 
 [ext_resource type="Script" path="res://Scenes/UI.gd" id="1_02l2s"]
 [ext_resource type="FontFile" uid="uid://cik3itsj706dl" path="res://Monocraft.otf" id="1_fu37o"]
-[ext_resource type="PackedScene" uid="uid://cqn53dkwlushq" path="res://Scenes/Game_over.tscn" id="2_1eeci"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -13,58 +12,41 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_02l2s")
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.288
-anchor_right = 0.676
-anchor_bottom = 0.076
-offset_left = -551.96
-offset_top = 806.0
-offset_right = -869.384
-offset_bottom = 798.752
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 2
+anchor_top = 0.593
+anchor_bottom = 1.0
+offset_top = 96.736
+offset_right = 180.0
+offset_bottom = -107.0
+value = 100.0
+show_percentage = false
+metadata/_edit_group_ = true
+
+[node name="Percentage" type="RichTextLabel" parent="ProgressBar"]
+texture_filter = 1
+layout_mode = 2
+offset_top = 13.0
+offset_right = 180.0
+offset_bottom = 47.0
+theme_override_fonts/normal_font = ExtResource("1_fu37o")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+scroll_active = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+
+[node name="DashCooldowntext" type="RichTextLabel" parent="ProgressBar"]
+layout_mode = 2
+offset_top = -25.0
+offset_right = 178.0
+offset_bottom = -2.0
 theme_override_fonts/normal_font = ExtResource("1_fu37o")
 theme_override_font_sizes/normal_font_size = 20
 text = "Dash Cooldown"
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
-
-[node name="ProgressBar" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_top = 827.0
-offset_right = 182.0
-offset_bottom = 903.0
-value = 100.0
-show_percentage = false
-
-[node name="Percentage" type="RichTextLabel" parent="."]
-texture_filter = 1
-layout_mode = 0
-offset_left = 1.0
-offset_top = 842.0
-offset_right = 91.0
-offset_bottom = 865.0
-scale = Vector2(2, 2)
-theme_override_fonts/normal_font = ExtResource("1_fu37o")
-theme_override_font_sizes/normal_font_size = 20
-bbcode_enabled = true
-scroll_active = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-
-[node name="Game_over_screen" parent="." instance=ExtResource("2_1eeci")]
-layout_mode = 1
-
-[node name="Restart" type="Button" parent="Game_over_screen"]
-layout_mode = 0
-offset_left = 755.0
-offset_top = 542.0
-offset_right = 971.0
-offset_bottom = 626.0
-theme_override_fonts/font = ExtResource("1_fu37o")
-theme_override_font_sizes/font_size = 30
-text = "START OVER"
 
 [node name="ScoreBoard" type="RichTextLabel" parent="."]
 layout_mode = 1
@@ -84,4 +66,40 @@ fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 
-[connection signal="pressed" from="Game_over_screen/Restart" to="." method="_on_restart_pressed"]
+[node name="GameOverText" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -359.0
+offset_top = -170.0
+offset_right = 368.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_fu37o")
+theme_override_font_sizes/normal_font_size = 120
+bbcode_enabled = true
+text = "[center]GAME OVER"
+
+[node name="Restart" type="Button" parent="GameOverText"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -105.5
+offset_top = -121.0
+offset_right = 110.5
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_fu37o")
+theme_override_font_sizes/font_size = 30
+text = "START OVER"
+
+[connection signal="pressed" from="GameOverText/Restart" to="." method="_on_restart_pressed"]
