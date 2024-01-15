@@ -56,6 +56,7 @@ func _physics_process(delta):
 
 
 func _on_enemy_death_timeout():
+	GlobalVars.enemyCount -= 1
 	queue_free()
 
 
