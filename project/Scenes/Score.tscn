@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ltxxlmstcipn"]
 
 [ext_resource type="Script" path="res://Code/UI.gd" id="1_3ivll"]
-[ext_resource type="FontFile" uid="uid://cik3itsj706dl" path="res://Monocraft.otf" id="1_fu37o"]
+[ext_resource type="FontFile" uid="uid://cik3itsj706dl" path="res://Resourcdes/Monocraft.otf" id="1_fu37o"]
 
 [node name="UI" type="Control"]
 layout_mode = 3

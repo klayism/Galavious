@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b71a1ul30k024" path="res://Scenes/Player.tscn" id="2_6rdrn"]
 [ext_resource type="Material" uid="uid://dkxr0wkmtmubf" path="res://Materials/Wall.material" id="3_0o3m4"]
 [ext_resource type="PackedScene" uid="uid://ltxxlmstcipn" path="res://Scenes/Score.tscn" id="3_sgxjt"]
-[ext_resource type="Texture2D" uid="uid://dhtkhwyl0bmq7" path="res://Space.jpg" id="6_n0l04"]
+[ext_resource type="Texture2D" uid="uid://dhtkhwyl0bmq7" path="res://Resourcdes/Space.jpg" id="6_n0l04"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_rtghv"]
 material = ExtResource("3_0o3m4")

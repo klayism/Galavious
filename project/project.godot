@@ -13,8 +13,8 @@ config_version=5
 config/name="Galavious"
 run/main_scene="res://Scenes/Main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
-boot_splash/image="res://Logo.png"
-config/icon="res://Logo.png"
+boot_splash/image="res://Resourcdes/Logo.png"
+config/icon="res://Resourcdes/Logo.png"
 
 [autoload]
 
