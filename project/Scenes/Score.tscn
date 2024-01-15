@@ -1,16 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://ltxxlmstcipn"]
 
-[ext_resource type="Script" path="res://Scenes/UI.gd" id="1_02l2s"]
+[ext_resource type="Script" path="res://Code/UI.gd" id="1_3ivll"]
 [ext_resource type="FontFile" uid="uid://cik3itsj706dl" path="res://Monocraft.otf" id="1_fu37o"]
 
-[node name="Control" type="Control"]
+[node name="UI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_02l2s")
+script = ExtResource("1_3ivll")
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 layout_mode = 2
@@ -80,6 +80,8 @@ offset_right = 368.0
 offset_bottom = 78.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("1_fu37o")
 theme_override_font_sizes/normal_font_size = 120
 bbcode_enabled = true
