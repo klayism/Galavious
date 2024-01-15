@@ -46,7 +46,7 @@ func _process(delta):
 		print($Player/Locator.global_position)
 	$UI/ProgressBar.value = ($Player/DashCooldown.time_left /  3)*100
 	$UI/Percentage.text = "[center]" + str(roundf(($Player/DashCooldown.time_left /  3)*30)/10) + "s"
-	$UI/ScoreBoard.text = "Score: " + str(GlobalVars.score)
+	$UI/ScoreBoard.text = "[center]Score: " + str(GlobalVars.score)
 
 func _on_mob_spawn_timeout(): # there has got to be a better way to do this 
 	if GlobalVars.enemyCount == 5:
