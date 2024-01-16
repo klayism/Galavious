@@ -11,12 +11,10 @@ func _ready():
 func _process(delta):
 	position.x -= 1 * delta * speed
 	position.y = 0
-	
 
 
 func _on_bullet_death_timeout():
 	queue_free()
-
 
 func _on_body_entered(body):
 	if body.name == "LeftWall" or body.name=="RightWall":

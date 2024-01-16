@@ -12,9 +12,6 @@ var enemycoolcount = 1
 var canShoot = true
 @onready var Game_over_visibility = $UI/GameOverText
 
-
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalVars.restart_pressed.connect(_on_restart)
@@ -124,8 +121,6 @@ func _on_mob_spawn_timeout(): # there has got to be a better way to do this
 		$MobSpawnTimer.start()
 		GlobalVars.inieneins = FiringTimer5
 		enemycoolcount = 1
-	
-	
 func fire(selfname, inspos, parentenemy,enemycoolcountusehere): # there has got to be a better way to do this 
 	if enemycoolcountusehere == 1:
 		
