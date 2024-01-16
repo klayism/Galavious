@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c21x2ty0gdut3"]
+[gd_scene load_steps=11 format=3 uid="uid://c21x2ty0gdut3"]
 
 [ext_resource type="Script" path="res://Code/Main.gd" id="1_q0oae"]
 [ext_resource type="PackedScene" uid="uid://b71a1ul30k024" path="res://Scenes/Player.tscn" id="2_6rdrn"]
 [ext_resource type="Material" uid="uid://dkxr0wkmtmubf" path="res://Materials/Wall.material" id="3_0o3m4"]
 [ext_resource type="PackedScene" uid="uid://ltxxlmstcipn" path="res://Scenes/Score.tscn" id="3_sgxjt"]
+[ext_resource type="AudioStream" uid="uid://g5pswebrvg80" path="res://Sounds/Galaga_Kill_Enemy_Sound_Effect.mp3" id="4_22hki"]
 [ext_resource type="AudioStream" uid="uid://cyrjfd6pa0lwe" path="res://Sounds/Galaga_Firing_Sound_Effect.mp3" id="6_7xddv"]
 [ext_resource type="Texture2D" uid="uid://dhtkhwyl0bmq7" path="res://Resourcdes/Space.jpg" id="6_n0l04"]
 
@@ -24,6 +25,12 @@ transform = Transform3D(0.8, -4.76837e-08, -9.53672e-08, 4.76837e-08, 0.8, 1.192
 
 [node name="ShootCooldown" type="Timer" parent="Player"]
 wait_time = 0.25
+
+[node name="FiringSound" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("6_7xddv")
+
+[node name="TargetHit" type="AudioStreamPlayer" parent="Player"]
+stream = ExtResource("4_22hki")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, -0.984808, 0.173648, 0, 0.173648, 0.984808, -1, 4.30473e-08, -7.5904e-09, 5.9206, 22.855, -6.32799e-07)
@@ -117,9 +124,6 @@ autostart = true
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(-4.15788e-07, -9.36758, -1.65176, 0, 1.65176, -9.36758, 9.51213, -4.0947e-07, -7.22006e-08, 0, -33, 0)
 texture = ExtResource("6_n0l04")
-
-[node name="FiringSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_7xddv")
 
 [connection signal="timeout" from="Player/ShootCooldown" to="." method="_on_shoot_cooldown_timeout"]
 [connection signal="timeout" from="MobSpawnTimer" to="." method="_on_mob_spawn_timeout"]

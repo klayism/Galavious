@@ -17,6 +17,7 @@ var canShoot = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GlobalVars.restart_pressed.connect(_on_restart)
+	GlobalVars.target_hit.connect(_enemy_hit)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -24,6 +25,7 @@ func _process(delta):
 	
 	if Input.is_action_just_pressed("fire"):
 		if canShoot:
+			$Player/FiringSound.play()
 			$Player/ShootCooldown.start()
 			canShoot = false
 			var scene = preload("res://Scenes/Bullet.tscn")
@@ -255,3 +257,6 @@ func _on_restart():
 
 func _on_shoot_cooldown_timeout():
 	canShoot = true
+
+func _enemy_hit():
+	$Player/TargetHit.play()

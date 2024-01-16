@@ -22,7 +22,7 @@ func _on_body_entered(body):
 	if body.name == "LeftWall" or body.name=="RightWall":
 		pass
 	else:
-		$TargetHit.play()
+		GlobalVars.target_hit.emit()
 		body.position = Vector3(1000000,1000000,1000000)
 		GlobalVars.score += 5
 		body.queue_free()
