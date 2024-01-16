@@ -1,4 +1,5 @@
 extends Node3D
+#prepare yourself for some of the worst code you will ever since in your life
 
 var fireholecount = 1
 var enemy_instance
@@ -242,8 +243,6 @@ func spawnplacement(instance, random_number):
 	elif random_number == 8:
 		add_child(instance)
 		instance.position = $Location/Spawns/MobSpawn9.position
-
-	
 func _on_restart():
 	get_tree().call_group("ToReset","queue_free")
 	GlobalVars.enemyCount = 0
@@ -252,11 +251,7 @@ func _on_restart():
 	$Player.position = Vector3(0,0,0)
 	$MobSpawnTimer.stop()
 	$MobSpawnTimer.start()
-	
-
-
 func _on_shoot_cooldown_timeout():
 	canShoot = true
-
 func _enemy_hit():
 	$Player/TargetHit.play()
