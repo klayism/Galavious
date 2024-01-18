@@ -104,8 +104,7 @@ func _on_mob_spawn_timeout(): # there has got to be a better way to do this
 
 func firingtimermaker(enemy_instance, enemycoolcount):
 	var FiringTimer = Timer.new()
-	var firingtimerpath = FiringTimer.get_path()
-	if get_node_or_null(firingtimerpath):
+	if get_node(enemy_instance.get_path()):
 		FiringTimer.timeout.connect(fire.bind(FiringTimer,enemy_instance.position,enemy_instance,enemycoolcount))
 		FiringTimer.wait_time = 0.7
 		FiringTimer.autostart = true
