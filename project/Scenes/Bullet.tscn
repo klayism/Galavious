@@ -15,10 +15,10 @@ contact_monitor = true
 script = ExtResource("1_r3vai")
 
 [node name="BulletFrame" parent="." instance=ExtResource("2_prp5l")]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0.499109, 0.101304, 0.0930528)
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.398435, 0.0821115, 0.0823099)
 shape = SubResource("BoxShape3D_h3qvc")
 
 [node name="BulletDeath" type="Timer" parent="."]

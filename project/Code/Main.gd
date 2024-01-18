@@ -139,7 +139,6 @@ func fire(selfname, inspos, parentenemy,enemycoolcountusehere): # there has got 
 		instance.look_at($Player.position, Vector3(0, 1, 0))
 		instance.rotate_y(deg_to_rad(90))
 		instance.add_to_group("ToReset")
-		instance.scale = Vector3(.8,.8,.8)
 	elif enemycoolcountusehere == 2:
 		var scene = preload("res://Scenes/Enemy_Bullet.tscn") # Creates the enemy bullet
 		var instance = scene.instantiate()
@@ -156,7 +155,6 @@ func fire(selfname, inspos, parentenemy,enemycoolcountusehere): # there has got 
 		instance.look_at($Player.position, Vector3(0, 1, 0))
 		instance.rotate_y(deg_to_rad(90))
 		instance.add_to_group("ToReset")
-		instance.scale = Vector3(.8,.8,.8)
 	elif enemycoolcountusehere == 3:
 		var scene = preload("res://Scenes/Enemy_Bullet.tscn") # Creates the enemy bullet
 		var instance = scene.instantiate()
@@ -173,7 +171,6 @@ func fire(selfname, inspos, parentenemy,enemycoolcountusehere): # there has got 
 		instance.look_at($Player.position, Vector3(0, 1, 0))
 		instance.rotate_y(deg_to_rad(90))
 		instance.add_to_group("ToReset")
-		instance.scale = Vector3(.8,.8,.8)
 	elif enemycoolcountusehere == 4:
 		var scene = preload("res://Scenes/Enemy_Bullet.tscn") # Creates the enemy bullet
 		var instance = scene.instantiate()
@@ -190,7 +187,6 @@ func fire(selfname, inspos, parentenemy,enemycoolcountusehere): # there has got 
 		instance.look_at($Player.position, Vector3(0, 1, 0))
 		instance.rotate_y(deg_to_rad(90))
 		instance.add_to_group("ToReset")
-		instance.scale = Vector3(.8,.8,.8)
 	elif enemycoolcountusehere == 5:
 		var scene = preload("res://Scenes/Enemy_Bullet.tscn") # Creates the enemy bullet
 		var instance = scene.instantiate()
@@ -207,7 +203,6 @@ func fire(selfname, inspos, parentenemy,enemycoolcountusehere): # there has got 
 		instance.look_at($Player.position, Vector3(0, 1, 0))
 		instance.rotate_y(deg_to_rad(90))
 		instance.add_to_group("ToReset")
-		instance.scale = Vector3(.8,.8,.8)
 
 
 func spawnplacement(instance, random_number):

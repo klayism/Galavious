@@ -1,5 +1,4 @@
 extends Node3D
-var body
 @export var speed = 30
 # Called when the node enters the scene tree for the first time.
 func _ready():
