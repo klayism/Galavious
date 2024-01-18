@@ -48,12 +48,12 @@ func _process(delta):
 	$UI/ProgressBar/Percentage.text = "[center]" + str(roundf(($Player/DashCooldown.time_left /  3)*30)/10) + "s"
 	$UI/ScoreBoard.text = "[center]Score: " + str(GlobalVars.score)
 
-func _on_mob_spawn_timeout(): # there has got to be a better way to do this 
+func _on_mob_spawn_timeout(): # there has got to be a better way to do this
+	var scene = preload("res://Scenes/Enemy.tscn") 
 	if GlobalVars.enemyCount == 5:
 		pass
 	elif enemycoolcount == 1:
 		var random_number = randi() % 9
-		var scene = preload("res://Scenes/Enemy.tscn")
 		enemy_instance = scene.instantiate()
 		enemy_instance.add_to_group("ToReset")
 		spawnplacement(enemy_instance, random_number)
@@ -64,7 +64,7 @@ func _on_mob_spawn_timeout(): # there has got to be a better way to do this
 	elif enemycoolcount == 2:
 		var random_number = randi() % 9
 		var scene2 = preload("res://Scenes/Enemy.tscn")
-		enemy_instance2 = scene2.instantiate()
+		enemy_instance2 = scene.instantiate()
 		enemy_instance2.add_to_group("ToReset")
 		spawnplacement(enemy_instance2, random_number)
 		var letimer = firingtimermaker(enemy_instance2,enemycoolcount)
@@ -74,7 +74,7 @@ func _on_mob_spawn_timeout(): # there has got to be a better way to do this
 	elif enemycoolcount == 3:
 		var random_number = randi() % 9
 		var scene3 = preload("res://Scenes/Enemy.tscn")
-		enemy_instance3 = scene3.instantiate()
+		enemy_instance3 = scene.instantiate()
 		enemy_instance3.add_to_group("ToReset")
 		spawnplacement(enemy_instance3, random_number)
 		var letimer = firingtimermaker(enemy_instance2,enemycoolcount)
@@ -84,7 +84,7 @@ func _on_mob_spawn_timeout(): # there has got to be a better way to do this
 	elif enemycoolcount == 4:
 		var random_number = randi() % 9
 		var scene4 = preload("res://Scenes/Enemy.tscn")
-		enemy_instance4 = scene4.instantiate()
+		enemy_instance4 = scene.instantiate()
 		enemy_instance4.add_to_group("ToReset")
 		spawnplacement(enemy_instance4, random_number)
 		var letimer = firingtimermaker(enemy_instance2,enemycoolcount)
@@ -94,7 +94,7 @@ func _on_mob_spawn_timeout(): # there has got to be a better way to do this
 	elif enemycoolcount == 5:
 		var random_number = randi() % 9
 		var scene5 = preload("res://Scenes/Enemy.tscn")
-		enemy_instance5 = scene5.instantiate()
+		enemy_instance5 = scene.instantiate()
 		enemy_instance5.add_to_group("ToReset")
 		spawnplacement(enemy_instance5, random_number)
 		var letimer = firingtimermaker(enemy_instance2,enemycoolcount)
@@ -104,7 +104,8 @@ func _on_mob_spawn_timeout(): # there has got to be a better way to do this
 
 func firingtimermaker(enemy_instance, enemycoolcount):
 	var FiringTimer = Timer.new()
-	if get_node(enemy_instance.get_path()):
+	print(is_instance_valid(enemy_instance))
+	if is_instance_valid(enemy_instance) == true:
 		FiringTimer.timeout.connect(fire.bind(FiringTimer,enemy_instance.position,enemy_instance,enemycoolcount))
 		FiringTimer.wait_time = 0.7
 		FiringTimer.autostart = true
