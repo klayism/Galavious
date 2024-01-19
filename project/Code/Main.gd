@@ -82,34 +82,11 @@ func fire(parentenemy): # there has got to be a better way to do this
 
 
 func spawnplacement(instance, random_number):
-	if random_number == 0:
-		add_child(instance)
-		instance.position = $Location/Spawns/MobSpawn.position
-	elif random_number == 1:
-		add_child(instance)
-		instance.position = $Location/Spawns/MobSpawn2.position
-	elif random_number == 2:
-		add_child(instance)
-		instance.position = $Location/Spawns/MobSpawn3.position
-	elif random_number == 3:
-		add_child(instance)
-		instance.position = $Location/Spawns/MobSpawn4.position
-	elif random_number == 4:
-		add_child(instance)
-		instance.position = $Location/Spawns/MobSpawn5.position
-	elif random_number == 5:
-		add_child(instance)
-		instance.position = $Location/Spawns/MobSpawn6.position
-	elif random_number == 6:
-		add_child(instance)
-		instance.position = $Location/Spawns/MobSpawn7.position
-	elif random_number == 7:
-		add_child(instance)
-		instance.position = $Location/Spawns/MobSpawn8.position
-	elif random_number == 8:
-		add_child(instance)
-		instance.position = $Location/Spawns/MobSpawn9.position
-		
+	var spawn_positions = [$Location/Spawns/MobSpawn,$Location/Spawns/MobSpawn2,$Location/Spawns/MobSpawn3,
+	$Location/Spawns/MobSpawn4,$Location/Spawns/MobSpawn5,$Location/Spawns/MobSpawn6,
+	$Location/Spawns/MobSpawn7,$Location/Spawns/MobSpawn8,$Location/Spawns/MobSpawn9]
+	add_child(instance)
+	instance.position = spawn_positions[random_number].position
 
 func _on_restart():
 	get_tree().call_group("ToReset","queue_free")
