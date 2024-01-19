@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://djuijlkgufdeg"]
 
 [ext_resource type="Script" path="res://Code/Bomber.gd" id="1_i5gpm"]
-[ext_resource type="PackedScene" uid="uid://b0nanqfkrcc8v" path="res://3DRenders/enemy.glb" id="1_l4yfj"]
+[ext_resource type="PackedScene" uid="uid://33bbh1t5ld3b" path="res://3DRenders/BomberRender.glb" id="2_vwwdo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bkc8n"]
 size = Vector3(24.5579, 22.2466, 22.477)
@@ -13,7 +13,7 @@ script = ExtResource("1_i5gpm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.90927, 1.98225, -0.261505)
 shape = SubResource("BoxShape3D_bkc8n")
 
-[node name="enemy" parent="." instance=ExtResource("1_l4yfj")]
+[node name="BomberRender" parent="." instance=ExtResource("2_vwwdo")]
 
 [node name="EnemyDeath" type="Timer" parent="."]
 wait_time = 15.515

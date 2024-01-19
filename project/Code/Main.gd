@@ -65,12 +65,11 @@ func firingtimermaker(enemy_instance):
 	else:
 		FiringTimer.queue_free()
 
-
 func fire(parentenemy): # there has got to be a better way to do this 
 	var scene = preload("res://Scenes/Enemy_Bullet.tscn") 
 	var instance = scene.instantiate()
 	instance.position = parentenemy.position
-	var direction = ($Player.position - parentenemy.position).normalized()
+	var direction = ($Player.position - parentenemy.position).normalized() 
 	instance.gameovercontrol = Game_over_visibility #allows the bullet to display the game over screen when it hits the player 
 	instance.add_to_group("ToReset") # adds the bullet to the group that will help kill it when the game get's restarted
 	add_child(instance)# Creates the enemy bullet
