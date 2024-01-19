@@ -67,27 +67,21 @@ func firingtimermaker(enemy_instance):
 
 
 func fire(parentenemy): # there has got to be a better way to do this 
-	var scene = preload("res://Scenes/Enemy_Bullet.tscn") # Creates the enemy bullet
+	var scene = preload("res://Scenes/Enemy_Bullet.tscn") 
 	var instance = scene.instantiate()
 	instance.position = parentenemy.position
-	# Calculate the direction vector from enemy to player
 	var direction = ($Player.position - parentenemy.position).normalized()
-	# Store the player's position for later use in bullet movement
-	instance.gameovercontrol = Game_over_visibility
-	instance.add_to_group("ToReset")
-	add_child(instance)
+	instance.gameovercontrol = Game_over_visibility #allows the bullet to display the game over screen when it hits the player 
+	instance.add_to_group("ToReset") # adds the bullet to the group that will help kill it when the game get's restarted
+	add_child(instance)# Creates the enemy bullet
 	instance.look_at($Player.position, Vector3(0, 1, 0))
 	instance.rotate_y(deg_to_rad(90))
-	# Set the bullet's initial position to the enemy's position
-
-
 func spawnplacement(instance, random_number):
 	var spawn_positions = [$Location/Spawns/MobSpawn,$Location/Spawns/MobSpawn2,$Location/Spawns/MobSpawn3,
 	$Location/Spawns/MobSpawn4,$Location/Spawns/MobSpawn5,$Location/Spawns/MobSpawn6,
 	$Location/Spawns/MobSpawn7,$Location/Spawns/MobSpawn8,$Location/Spawns/MobSpawn9]
 	add_child(instance)
 	instance.position = spawn_positions[random_number].position
-
 func _on_restart():
 	get_tree().call_group("ToReset","queue_free")
 	GlobalVars.enemyCount = 0
