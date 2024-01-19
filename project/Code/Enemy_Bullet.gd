@@ -1,9 +1,7 @@
 extends Node3D
-var playerpos
 var counter = 1
 var direction
 var gameovercontrol
-var theparent
 
 
 # Called when the node enters the scene tree for the first time.
