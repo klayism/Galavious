@@ -52,7 +52,7 @@ func _on_mob_spawn_timeout(): # there has got to be a better way to do this
 	var scene = preload("res://Scenes/Enemy.tscn") 
 	if GlobalVars.enemyCount == 5:
 		pass
-	elif enemycoolcount == 1:
+	elif enemycoolcount == 1 or true:
 		var random_number = randi() % 9
 		enemy_instance = scene.instantiate()
 		enemy_instance.add_to_group("ToReset")
@@ -60,52 +60,15 @@ func _on_mob_spawn_timeout(): # there has got to be a better way to do this
 		var letimer = firingtimermaker(enemy_instance, enemycoolcount)
 		enemy_instance.add_child(letimer)
 		$MobSpawnTimer.start()
-		enemycoolcount += 1
-	elif enemycoolcount == 2:
-		var random_number = randi() % 9
-		var scene2 = preload("res://Scenes/Enemy.tscn")
-		enemy_instance2 = scene.instantiate()
-		enemy_instance2.add_to_group("ToReset")
-		spawnplacement(enemy_instance2, random_number)
-		var letimer = firingtimermaker(enemy_instance2,enemycoolcount)
-		enemy_instance2.add_child(letimer)
-		$MobSpawnTimer.start()
-		enemycoolcount += 1
-	elif enemycoolcount == 3:
-		var random_number = randi() % 9
-		var scene3 = preload("res://Scenes/Enemy.tscn")
-		enemy_instance3 = scene.instantiate()
-		enemy_instance3.add_to_group("ToReset")
-		spawnplacement(enemy_instance3, random_number)
-		var letimer = firingtimermaker(enemy_instance2,enemycoolcount)
-		enemy_instance3.add_child(letimer)
-		$MobSpawnTimer.start()
-		enemycoolcount += 1
-	elif enemycoolcount == 4:
-		var random_number = randi() % 9
-		var scene4 = preload("res://Scenes/Enemy.tscn")
-		enemy_instance4 = scene.instantiate()
-		enemy_instance4.add_to_group("ToReset")
-		spawnplacement(enemy_instance4, random_number)
-		var letimer = firingtimermaker(enemy_instance2,enemycoolcount)
-		enemy_instance4.add_child(letimer)
-		$MobSpawnTimer.start()
-		enemycoolcount += 1
-	elif enemycoolcount == 5:
-		var random_number = randi() % 9
-		var scene5 = preload("res://Scenes/Enemy.tscn")
-		enemy_instance5 = scene.instantiate()
-		enemy_instance5.add_to_group("ToReset")
-		spawnplacement(enemy_instance5, random_number)
-		var letimer = firingtimermaker(enemy_instance2,enemycoolcount)
-		enemy_instance5.add_child(letimer)
-		$MobSpawnTimer.start()
-		enemycoolcount = 1
+		if enemycoolcount < 6:
+			enemycoolcount += 1
+		else:
+			enemycoolcount = 1
 
 func firingtimermaker(enemy_instance, enemycoolcount):
 	var FiringTimer = Timer.new()
 	print(is_instance_valid(enemy_instance))
-	if is_instance_valid(enemy_instance) == true:
+	if is_instance_valid(enemy_instance) == true :
 		FiringTimer.timeout.connect(fire.bind(FiringTimer,enemy_instance.position,enemy_instance,enemycoolcount))
 		FiringTimer.wait_time = 0.7
 		FiringTimer.autostart = true
@@ -122,80 +85,95 @@ func fire(selfname, inspos, parentenemy,enemycoolcountusehere): # there has got 
 		add_child(instance)
 		
 		# Set the bullet's initial position to the enemy's position
-		instance.position = enemy_instance.position
-		# Calculate the direction vector from enemy to player
-		var direction = ($Player.position - inspos).normalized()
-		# Store the player's position for later use in bullet movement
-		instance.gameovercontrol = Game_over_visibility
-		instance.playerpos = $Player.position
-		instance.theparent = enemy_instance
-		instance.look_at($Player.position, Vector3(0, 1, 0))
-		instance.rotate_y(deg_to_rad(90))
-		instance.add_to_group("ToReset")
+		if is_instance_valid(enemy_instance):
+			instance.position = enemy_instance.position
+			# Calculate the direction vector from enemy to player
+			var direction = ($Player.position - inspos).normalized()
+			# Store the player's position for later use in bullet movement
+			instance.gameovercontrol = Game_over_visibility
+			instance.playerpos = $Player.position
+			instance.theparent = enemy_instance
+			instance.look_at($Player.position, Vector3(0, 1, 0))
+			instance.rotate_y(deg_to_rad(90))
+			instance.add_to_group("ToReset")
+		else:
+			instance.queue_free()
 	elif enemycoolcountusehere == 2:
 		var scene = preload("res://Scenes/Enemy_Bullet.tscn") # Creates the enemy bullet
 		var instance = scene.instantiate()
 		add_child(instance)
 		
 		# Set the bullet's initial position to the enemy's position
-		instance.position = enemy_instance2.position
-		# Calculate the direction vector from enemy to player
-		var direction = ($Player.position - inspos).normalized()
-		# Store the player's position for later use in bullet movement
-		instance.gameovercontrol = Game_over_visibility
-		instance.playerpos = $Player.position
-		instance.theparent = enemy_instance2
-		instance.look_at($Player.position, Vector3(0, 1, 0))
-		instance.rotate_y(deg_to_rad(90))
-		instance.add_to_group("ToReset")
+		if is_instance_valid(enemy_instance2):
+			instance.position = enemy_instance2.position
+			# Calculate the direction vector from enemy to player
+			var direction = ($Player.position - inspos).normalized()
+			# Store the player's position for later use in bullet movement
+			instance.gameovercontrol = Game_over_visibility
+			instance.playerpos = $Player.position
+			instance.theparent = enemy_instance2
+			instance.look_at($Player.position, Vector3(0, 1, 0))
+			instance.rotate_y(deg_to_rad(90))
+			instance.add_to_group("ToReset")
+		else:
+			instance.queue_free()
 	elif enemycoolcountusehere == 3:
 		var scene = preload("res://Scenes/Enemy_Bullet.tscn") # Creates the enemy bullet
 		var instance = scene.instantiate()
 		add_child(instance)
 		
 		# Set the bullet's initial position to the enemy's position
-		instance.position = enemy_instance3.position
-		# Calculate the direction vector from enemy to player
-		var direction = ($Player.position - inspos).normalized()
-		# Store the player's position for later use in bullet movement
-		instance.gameovercontrol = Game_over_visibility
-		instance.playerpos = $Player.position
-		instance.theparent = enemy_instance3
-		instance.look_at($Player.position, Vector3(0, 1, 0))
-		instance.rotate_y(deg_to_rad(90))
-		instance.add_to_group("ToReset")
+		if is_instance_valid(enemy_instance3):
+			instance.position = enemy_instance3.position
+			# Calculate the direction vector from enemy to player
+			var direction = ($Player.position - inspos).normalized()
+			# Store the player's position for later use in bullet movement
+			instance.gameovercontrol = Game_over_visibility
+			instance.playerpos = $Player.position
+			instance.theparent = enemy_instance3
+			instance.look_at($Player.position, Vector3(0, 1, 0))
+			instance.rotate_y(deg_to_rad(90))
+			instance.add_to_group("ToReset")
+		else:
+			instance.queue_free()
 	elif enemycoolcountusehere == 4:
 		var scene = preload("res://Scenes/Enemy_Bullet.tscn") # Creates the enemy bullet
 		var instance = scene.instantiate()
 		add_child(instance)
 		
 		# Set the bullet's initial position to the enemy's position
-		instance.position = enemy_instance4.position
-		# Calculate the direction vector from enemy to player
-		var direction = ($Player.position - inspos).normalized()
-		# Store the player's position for later use in bullet movement
-		instance.gameovercontrol = Game_over_visibility
-		instance.playerpos = $Player.position
-		instance.theparent = enemy_instance4
-		instance.look_at($Player.position, Vector3(0, 1, 0))
-		instance.rotate_y(deg_to_rad(90))
-		instance.add_to_group("ToReset")
+		if is_instance_valid(enemy_instance4):
+			instance.position = enemy_instance4.position
+			# Calculate the direction vector from enemy to player
+			var direction = ($Player.position - inspos).normalized()
+			# Store the player's position for later use in bullet movement
+			instance.gameovercontrol = Game_over_visibility
+			instance.playerpos = $Player.position
+			instance.theparent = enemy_instance4
+			instance.look_at($Player.position, Vector3(0, 1, 0))
+			instance.rotate_y(deg_to_rad(90))
+			instance.add_to_group("ToReset")
+		else:
+			instance.queue_free()
 	elif enemycoolcountusehere == 5:
 		var scene = preload("res://Scenes/Enemy_Bullet.tscn") # Creates the enemy bullet
 		var instance = scene.instantiate()
 		add_child(instance)
 		
 		# Set the bullet's initial position to the enemy's position
-		instance.position = enemy_instance5.position
-		# Calculate the direction vector from enemy to player
-		var direction = ($Player.position - inspos).normalized()
-		# Store the player's position for later use in bullet movement
-		instance.gameovercontrol = Game_over_visibility
-		instance.playerpos = $Player.position
-		instance.theparent = enemy_instance5
-		instance.look_at($Player.position, Vector3(0, 1, 0))
-		instance.rotate_y(deg_to_rad(90))
-		instance.add_to_group("ToReset")
+		if is_instance_valid(enemy_instance5):
+			instance.position = enemy_instance5.position
+			# Calculate the direction vector from enemy to player
+			var direction = ($Player.position - inspos).normalized()
+			# Store the player's position for later use in bullet movement
+			instance.gameovercontrol = Game_over_visibility
+			instance.playerpos = $Player.position
+			instance.theparent = enemy_instance5
+			instance.look_at($Player.position, Vector3(0, 1, 0))
+			instance.rotate_y(deg_to_rad(90))
+			instance.add_to_group("ToReset")
+		else:
+			instance.queue_free()
 
 
 func spawnplacement(instance, random_number):
