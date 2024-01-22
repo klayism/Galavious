@@ -44,7 +44,7 @@ func _process(delta):
 
 func _on_mob_spawn_timeout(): # there has got to be a better way to do this
 	var scene = preload("res://Scenes/Enemy.tscn") 
-	if GlobalVars.enemyCount == 5:
+	if GlobalVars.enemyCount == 3:
 		pass
 	else:
 		var random_number = randi() % 9
@@ -59,7 +59,7 @@ func firingtimermaker(enemy_instance):
 	var FiringTimer = Timer.new()
 	if is_instance_valid(enemy_instance) == true :
 		FiringTimer.timeout.connect(fire.bind(enemy_instance))
-		FiringTimer.wait_time = 0.7
+		FiringTimer.wait_time = 1.2
 		FiringTimer.autostart = true
 		return FiringTimer
 	else:
