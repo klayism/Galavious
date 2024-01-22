@@ -33,6 +33,9 @@ func _physics_process(delta):
 			
 		elif !goleft:
 			zpos = logcurve(delta,true,rng.randf_range(0,3))
+			
+			
+
 		
 	#rng.randi_range(-1,1)).normalized()
 	var direction = (transform.basis * Vector3(1,0,zpos/1.5).normalized())

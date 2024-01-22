@@ -44,11 +44,23 @@ func _process(delta):
 
 func _on_mob_spawn_timeout(): # there has got to be a better way to do this
 	var scene = preload("res://Scenes/Enemy.tscn") 
+	var Bomberscene = preload("res://Scenes/Bomber.tscn")
+	var bomberRatio = 0
+	if GlobalVars.killedEnemys > 10:
+		bomberRatio = 1
+	elif GlobalVars.killedEnemys > 20:
+		bomberRatio = 2
+	elif GlobalVars.killedEnemys > 30:
+		bomberRatio = 3
 	if GlobalVars.enemyCount == 3:
 		pass
+		
 	else:
 		var random_number = randi() % 9
-		enemy_instance = scene.instantiate()
+		if bomberRatio == 0:
+			enemy_instance = scene.instantiate()
+		elif bomberRatio == 1:
+			enemy_instance = Bomberscene.instantiate()
 		enemy_instance.add_to_group("ToReset")
 		spawnplacement(enemy_instance, random_number)
 		var letimer = firingtimermaker(enemy_instance)
@@ -89,6 +101,7 @@ func _on_restart():
 	$Player.position = Vector3(0,0,0)
 	$MobSpawnTimer.stop()
 	$MobSpawnTimer.start()
+	GlobalVars.killedEnemys = 0 
 func _on_shoot_cooldown_timeout():
 	canShoot = true
 func _enemy_hit():

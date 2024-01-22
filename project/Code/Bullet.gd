@@ -24,4 +24,5 @@ func _on_body_entered(body):
 		GlobalVars.score += 5
 		body.queue_free()
 		GlobalVars.enemyCount -= 1
+		GlobalVars.killedEnemys += 1
 		self.queue_free()
