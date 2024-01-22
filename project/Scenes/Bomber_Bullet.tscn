@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bf5wxkqst0gxa"]
+
+[ext_resource type="Script" path="res://Code/Enemy_Bullet.gd" id="1_klari"]
+[ext_resource type="PackedScene" uid="uid://darvwqq1wglou" path="res://3DRenders/Bomber_Bullet.tscn" id="2_m04ad"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h3qvc"]
+size = Vector3(12.0804, 4.03882, 4.11193)
+
+[node name="RigidBody3D" type="RigidBody3D"]
+collision_layer = 8
+max_contacts_reported = 10
+contact_monitor = true
+script = ExtResource("1_klari")
+
+[node name="Bomber_Bullet" parent="." instance=ExtResource("2_m04ad")]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.408701, 0.0819238, 0.0790634)
+shape = SubResource("BoxShape3D_h3qvc")
+
+[node name="BulletDeath" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
