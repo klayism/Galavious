@@ -12,9 +12,6 @@ var dashcooldownover = true
 
 func _physics_process(delta):
 	velocity = Vector3.ZERO
-	
-	
-
 	if is_dashing:
 		if CurrentDirection == "right":
 			velocity.z += -1 * dash_speed
@@ -70,7 +67,6 @@ func _physics_process(delta):
 					pass
 				else:
 					shipstablization()
-
 		else:
 			CurrentDirection = "none"
 			shipstablization()
@@ -79,9 +75,6 @@ func _physics_process(delta):
 	if velocity != Vector3.ZERO:
 		velocity = velocity.normalized()
 		#normalizes the speed if going diagonal
-		
-
-
 	#fixes sliding on edge
 	var collision = move_and_collide(velocity * delta * speed)
 	#checks which wall is being hit
@@ -95,10 +88,6 @@ func _physics_process(delta):
 		position.x = 5
 	elif position.x > 17:
 		position.x = 17
-		
-		
-		
-		
 func shipstablization():
 	if ship.rotation > Vector3(0,0,0):
 		ship.rotate_x(-0.025)
@@ -108,12 +97,7 @@ func shipstablization():
 		ship.rotate_x(.025)
 		if ship.rotation > Vector3(0,0,0):
 			ship.rotation = Vector3(0,0,0)
-	
-
 
 func _dash_timeout():
 	is_dashing = false
 	$DashCooldown.start()
-
-
-

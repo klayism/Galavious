@@ -57,7 +57,7 @@ func _on_mob_spawn_timeout(): # there has got to be a better way to do this
 		pass
 		
 	else:
-		bomberRatio = 1
+		bomberRatio = 0
 		var random_number = randi() % 9
 		if bomberRatio == 0:
 			enemy_instance = scene.instantiate()
