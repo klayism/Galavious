@@ -20,6 +20,10 @@ config/icon="res://Resourcdes/Logo.png"
 
 GlobalVars="*res://Code/GlobalVars.gd"
 
+[dotnet]
+
+project/assembly_name="Galavious"
+
 [input]
 
 down={
