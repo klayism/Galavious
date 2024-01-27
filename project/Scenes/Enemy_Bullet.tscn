@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dvyydq467w5a7" path="res://3DRenders/Bullet.glb" id="2_ubdkd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_h3qvc"]
-size = Vector3(12.0804, 4.03882, 4.11193)
+size = Vector3(12, 4.03882, 4.11193)
 
 [node name="RigidBody3D" type="RigidBody3D"]
 collision_layer = 8
@@ -16,7 +16,7 @@ script = ExtResource("1_72w5i")
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.408701, 0.0819238, 0.0790634)
+transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0.405485, 0.0819238, 0.0790634)
 shape = SubResource("BoxShape3D_h3qvc")
 
 [node name="BulletDeath" type="Timer" parent="."]
