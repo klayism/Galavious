@@ -46,7 +46,6 @@ func _on_mob_spawn_timeout(): # there has got to be a better way to do this
 	var scene = preload("res://Scenes/Enemy.tscn") 
 	var Bomberscene = preload("res://Scenes/Bomber.tscn")
 	var bomberRatio = 0
-	var enemytype 
 	if GlobalVars.killedEnemys > 10:
 		bomberRatio = 1
 	elif GlobalVars.killedEnemys > 20:
@@ -57,38 +56,30 @@ func _on_mob_spawn_timeout(): # there has got to be a better way to do this
 		pass
 		
 	else:
-		bomberRatio = 0
 		var random_number = randi() % 9
 		if bomberRatio == 0:
 			enemy_instance = scene.instantiate()
-			enemytype = "regular"
 		elif bomberRatio == 1:
 			enemy_instance = Bomberscene.instantiate()
-			enemytype = "bomber"
 		enemy_instance.add_to_group("ToReset")
 		spawnplacement(enemy_instance, random_number)
-		var letimer = firingtimermaker(enemy_instance, enemytype)
+		var letimer = firingtimermaker(enemy_instance)
 		enemy_instance.add_child(letimer)
 		$MobSpawnTimer.start()
 
-func firingtimermaker(enemy_instance,enemytype):
+func firingtimermaker(enemy_instance):
 	var FiringTimer = Timer.new()
 	if is_instance_valid(enemy_instance) == true :
-		FiringTimer.timeout.connect(fire.bind(enemy_instance,enemytype))
+		FiringTimer.timeout.connect(fire.bind(enemy_instance))
 		FiringTimer.wait_time = 1.2
 		FiringTimer.autostart = true
 		return FiringTimer
 	else:
 		FiringTimer.queue_free()
 
-func fire(parentenemy,enemytype): # there has got to be a better way to do this 
-	var instance
+func fire(parentenemy): # there has got to be a better way to do this 
 	var scene = preload("res://Scenes/Enemy_Bullet.tscn") 
-	var bomberBulletScene = preload("res://scenes/Bomber_Bullet.tscn")
-	if enemytype == "regular":
-		instance = scene.instantiate()
-	elif enemytype == "bomber":
-		instance = bomberBulletScene.instantiate()
+	var instance = scene.instantiate()
 	instance.position = parentenemy.position
 	var direction = ($Player.position - parentenemy.position).normalized() 
 	instance.gameovercontrol = Game_over_visibility #allows the bullet to display the game over screen when it hits the player 

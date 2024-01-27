@@ -18,9 +18,6 @@ func _process(delta):
 	# Set the speed at which the bullet moves (adjust as needed)
 	var speed = 30
 	
-	if isWithinRange(position.x, 14, 0.2):
-		print(true)
-		explode()
 	# Move the bullet towards the player
 	position += direction * speed * delta
 	position.y = 0
@@ -29,12 +26,6 @@ func _process(delta):
 func _on_bullet_death_timeout():
 	queue_free()
 
-func explode():
-	pass
-
-
-func isWithinRange(value1, value2, tolerance):
-	return abs(value1 - value2) <= tolerance
 
 func _on_body_entered(body):
 	#if str(body.get_script()) == "<GDScript#-9223372011084970795>":
