@@ -83,7 +83,7 @@ func firingtimermaker(enemy_instance,enemyType):
 func fire(parentenemy,enemyType):
 	var instance
 	var scene = preload("res://Scenes/Enemy_Bullet.tscn") 
-	var bomberBulletScene = preload("res://Scenes/Enemy_Bullet.tscn")
+	var bomberBulletScene = preload("res://Scenes/Bomber_Bullet.tscn")
 	if enemyType == "regular":
 		instance = scene.instantiate()
 	elif enemyType == "bomber":

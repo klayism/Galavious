@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://f0ov75egv1n6"]
 
-[ext_resource type="PackedScene" uid="uid://de3y08cykj6au" path="res://3DRenders/BomberBullet.glb" id="1_cm4lv"]
+[ext_resource type="PackedScene" uid="uid://de3y08cykj6au" path="res://3DRenders/BomberBullet.glb" id="1_06476"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rqtfd"]
 size = Vector3(12, 4.03882, 4.11193)
 
 [node name="BomberBullet" type="RigidBody3D"]
 
-[node name="BomberBullet" parent="." instance=ExtResource("1_cm4lv")]
+[node name="BomberBullet" parent="." instance=ExtResource("1_06476")]
 transform = Transform3D(0.08, 0, 0, 0, 0.08, 0, 0, 0, 0.08, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
