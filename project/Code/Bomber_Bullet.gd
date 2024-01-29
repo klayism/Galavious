@@ -17,7 +17,7 @@ func _process(delta):
 		counter = 0
 	# Set the speed at which the bullet moves (adjust as needed)
 	var speed = 30
-	if isWithinRange(position.x, 14, 0.2):
+	if isWithinRange(position.x, 14, 0.4):
 		print(true)
 		explode()
 	# Move the bullet towards the player
@@ -32,13 +32,16 @@ func _on_bullet_death_timeout():
 func explode():
 	if isWithinRange(GlobalVars.PlayerPos.x, position.x, 3):
 		gameovercontrol.visible = true
-		queue_free()
+		$Explosion.visible = true
+		$BulletDeath.start()
 	elif isWithinRange(GlobalVars.PlayerPos.y, position.y, 3):
 		gameovercontrol.visible = true
-		queue_free()
+		$Explosion.visible = true
+		$BulletDeath.start()
 	elif isWithinRange(GlobalVars.PlayerPos.z, position.z, 3):
 		gameovercontrol.visible = true
-		queue_free()
+		$Explosion.visible = true
+		$BulletDeath.start()
 
 
 func isWithinRange(value1, value2, tolerance):
