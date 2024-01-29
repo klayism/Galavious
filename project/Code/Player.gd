@@ -96,9 +96,6 @@ func _physics_process(delta):
 	elif position.x > 17:
 		position.x = 17
 		
-		
-		
-		
 func shipstablization():
 	if ship.rotation > Vector3(0,0,0):
 		ship.rotate_x(-0.025)
@@ -108,12 +105,7 @@ func shipstablization():
 		ship.rotate_x(.025)
 		if ship.rotation > Vector3(0,0,0):
 			ship.rotation = Vector3(0,0,0)
-	
-
 
 func _dash_timeout():
 	is_dashing = false
 	$DashCooldown.start()
-
-
-

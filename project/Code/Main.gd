@@ -45,7 +45,7 @@ func _process(delta):
 func _on_mob_spawn_timeout():
 	var scene = preload("res://Scenes/Enemy.tscn") 
 	var Bomberscene = preload("res://Scenes/Bomber.tscn")
-	var bomberRatio = 0
+	var bomberRatio = 1
 	var enemyType
 	if GlobalVars.killedEnemys > 10:
 		bomberRatio = 1

@@ -8,6 +8,7 @@ size = Vector3(12, 4.03882, 4.11193)
 
 [node name="RigidBody3D" type="RigidBody3D"]
 collision_layer = 8
+mass = 0.01
 max_contacts_reported = 10
 contact_monitor = true
 script = ExtResource("1_72w5i")
